@@ -1,12 +1,15 @@
 <template>
     <section class="settings-panel">
-
+      <p>{{type}}</p>
     </section>
 </template>
 
 <script>
 export default {
-  name: "GraphSettings"
+  name: "GraphSettings",
+  props: {
+    type : String
+  }
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <img v-bind:src="graphSrc" width="200"/>
+    <img v-bind:src="graphSrc" width="200" @click="selected()"/>
     <p>{{graphType.toUpperCase()}}</p>
   </section>
 </template>
@@ -16,6 +16,11 @@ export default {
     return {
       graphSrc: "",
     };
+  },
+  methods:{
+      selected(){
+         this.$emit('typeSelected');
+      }
   },
     mounted() {
     const chartService = new QuickChartHandler();

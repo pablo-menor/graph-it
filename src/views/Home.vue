@@ -1,14 +1,15 @@
 <template>
   <div class="home">
-    <!-- <GraphSettings/> -->
+    <GraphSettings v-show="!showPanel" :type="typeSelected" />
     <h2>Select the type of graph you want to create</h2>
-    <section class="graph-types-panel">
-      <TypeSample graphType="line" class="graph" />
-      <TypeSample graphType="bar" class="graph" />
-      <TypeSample graphType="pie" class="graph" />
-      <TypeSample graphType="radialGauge" class="graph" />
-      <TypeSample graphType="progressBar" class="graph" />
-      <TypeSample graphType="doughnut" class="graph" />
+    <section class="graph-types-panel" v-show="showPanel">
+      <TypeSample
+        v-for="(item, i) in graphs"
+        :key="i"
+        :graphType="item.type"
+        @typeSelected="selected(item)"
+        class="graph"
+      />
     </section>
 
     <!-- <img v-bind:src="graphSrc" /> -->
@@ -17,7 +18,6 @@
 
 <script>
 // @ is an alias to /src
-import QuickChartHandler from "../service/quickchart";
 import GraphSettings from "@/components/GraphSettings.vue";
 import TypeSample from "@/components/TypeSample.vue";
 
@@ -30,32 +30,50 @@ export default {
   data() {
     return {
       graphSrc: "",
+      showPanel: true,
+      typeSelected: "dd",
+      graphs: [
+        {
+          type: "line",
+        },
+        {
+          type: "bar",
+        },
+        {
+          type: "pie",
+        },
+        {
+          type: "doughnut",
+        },
+        {
+          type: "radialGauge",
+        },
+        {
+          type: "progressBar",
+        },
+      ],
     };
   },
-  methods: {},
-  // mounted() {
-  //   const chartService = new QuickChartHandler();
-  //   const chart = chartService.getChart('bar');
-  //   console.log("PNG obtenido: ");
-  //   // chart.then(e=> console.log(e))
-  //   chart.then((e) => {
-  //     let urlBlob = URL.createObjectURL(e);
-  //     this.graphSrc = urlBlob;
-  //   });
-  // },
+  methods: {
+    selected(item) {
+      this.showPanel = false;
+      this.typeSelected = item.type;
+      // console.log(component.classList());
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .graph-types-panel {
   margin: auto;
-    width: 70vw;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
+  width: 70vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
 
-    .graph{
-      margin-top:70px ;
-    }
+  .graph {
+    margin-top: 70px;
+  }
 }
 </style>
