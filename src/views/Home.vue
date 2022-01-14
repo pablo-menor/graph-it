@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <GraphSettings v-show="!showPanel" :type="typeSelected" />
-    <h2>Select the type of graph you want to create</h2>
+    <h2 v-show="showPanel">Select the type of graph you want to create</h2>
     <section class="graph-types-panel" v-show="showPanel">
       <TypeSample
         v-for="(item, i) in graphs"
@@ -65,6 +65,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h2{
+  margin-top:70px ;
+}
 .graph-types-panel {
   margin: auto;
   width: 70vw;

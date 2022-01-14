@@ -23,8 +23,9 @@ export default {
       }
   },
     mounted() {
+    const data = `{type:'${this.graphType}',data:{labels:[2012,2013,2014,2015,2016],datasets:[{label:'Users',data:[120,60,50,180,120]}]}}`;
     const chartService = new QuickChartHandler();
-    const chart = chartService.getChart(this.graphType);
+    const chart = chartService.getChart(data);
     console.log("PNG obtenido: ");
     chart.then((e) => {
       let urlBlob = URL.createObjectURL(e);
