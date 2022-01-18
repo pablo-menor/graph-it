@@ -48,7 +48,6 @@ body{
 }
 /* FOOTER */
 footer {
-  margin-top: 18px;
   height: 100px;
   width: 100vw;
   background-color: rgb(66, 66, 66);

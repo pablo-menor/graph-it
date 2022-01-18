@@ -58,7 +58,6 @@ export default {
     selected(item) {
       this.showPanel = false;
       this.typeSelected = item.type;
-      // console.log(component.classList());
     },
   },
 };

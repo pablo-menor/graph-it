@@ -1,6 +1,5 @@
 <template>
   <section class="settings-panel">
-    <p>{{ type }}</p>
     <ProgressBarSettings/>
   </section>
 </template>
@@ -23,6 +22,5 @@ export default {
 .settings-panel {
   width: 100vw;
   height: 100vh;
-  background-color: red;
 }
 </style>
